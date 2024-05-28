@@ -12,10 +12,10 @@ homepage = "https://github.com/SaitoTsutomu/pyvrp-shipment"
 license = "Apache-2.0"
 name = "pyvrp-shipment"
 readme = "README.md"
-version = "0.1.0"
+version = "0.1.1"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.11"
 pyvrp = "^0.8.2"
 
 [tool.poetry.group.dev.dependencies]
