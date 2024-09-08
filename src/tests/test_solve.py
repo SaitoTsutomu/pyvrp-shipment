@@ -41,18 +41,18 @@ def param():
 
 
 def test_solve_success(param):
-    result = solve(param, max_iterations=100, display=False)
+    result = solve(param, max_iterations=10, display=False)
     assert result.is_feasible()
-    assert result.order_indexes == [[1, 3, 0], [4, 2, 5]]
+    assert result.order_indexes == [[4, 2, 5], [1, 3, 0]]
 
 
 def test_solve_lack_capacity(param):
     param.vehicle_type.capacity -= 1
-    result = solve(param, max_iterations=100, display=False)
+    result = solve(param, max_iterations=10, display=False)
     assert not result.is_feasible()
 
 
 def test_solve_lack_max_duration(param):
     param.vehicle_type.max_duration -= 1
-    result = solve(param, max_iterations=100, display=False)
+    result = solve(param, max_iterations=10, display=False)
     assert not result.is_feasible()

@@ -5,7 +5,7 @@ from pyvrp.stop import MaxIterations, MaxRuntime, MultipleCriteria
 
 
 @dataclass
-class VehicleType_:
+class VehicleType_:  # noqa: N801; To separate from pyvrp.VehicleType.
     num_available: int
     capacity: int
     max_duration: int
@@ -21,14 +21,14 @@ class Order:
 
 @dataclass
 class Param:
-    duration: dict[tuple[str, str], int]
+    duration: dict[str, int]
     vehicle_type: VehicleType_
     orders: list[Order]
     big_duration: int = 2**52
 
 
 @dataclass
-class Result_:
+class Result_:  # noqa: N801; To separate from pyvrp.Result.
     model: Model
     order_indexes: list[list[int]]
     result: Result

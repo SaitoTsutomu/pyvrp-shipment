@@ -1,5 +1,5 @@
-[tool.poetry]
-authors = ["Saito Tsutomu <tsutomu7@hotmail.co.jp>"]
+[project]
+authors = [{name = "Saito Tsutomu", email = "tsutomu7@hotmail.co.jp"}]
 classifiers = [
   "Development Status :: 1 - Planning",
   "License :: OSI Approved :: Apache Software License",
@@ -7,19 +7,23 @@ classifiers = [
   "Topic :: Software Development",
   "Topic :: Scientific/Engineering",
 ]
+dependencies = [
+  "pyvrp>=0.9.1",
+]
 description = "`pyvrp-shipment` is a package for wrapper for solving shipment in PyVRP"
-homepage = "https://github.com/SaitoTsutomu/pyvrp-shipment"
-license = "Apache-2.0"
+license = {text = "Apache-2.0"}
 name = "pyvrp-shipment"
 readme = "README.md"
-version = "0.1.1"
+requires-python = ">=3.12"
+version = "0.2.0"
 
-[tool.poetry.dependencies]
-python = "^3.11"
-pyvrp = "^0.8.2"
+[project.urls]
+homepage = "https://github.com/SaitoTsutomu/pyvrp-shipment"
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.2.1"
+[tool.uv]
+dev-dependencies = [
+  "pytest>=8.3.2",
+]
 
 [tool.mypy]
 ignore_missing_imports = true
@@ -33,8 +37,30 @@ addopts = [
   "-x", # 失敗時に終了
   "--capture=no", # 標準出力表示
 ]
-testpaths = "tests"
+testpaths = ["src"]
+
+[tool.ruff]
+src = ["src"]
+
+[tool.ruff.lint]
+ignore = ["E501"]
+select = [
+  "F", # Pyflakes https://docs.astral.sh/ruff/rules/#pyflakes-f
+  "E", # pycodestyle Error https://docs.astral.sh/ruff/rules/#error-e
+  "W", # pycodestyle Warning https://docs.astral.sh/ruff/rules/#warning-w
+  "C90", # mccabe https://docs.astral.sh/ruff/rules/#mccabe-c90
+  "I", # isort https://docs.astral.sh/ruff/rules/#isort-i
+  "N", # pep8-naming https://docs.astral.sh/ruff/rules/#pep8-naming-n
+  "UP", # pyupgrade https://docs.astral.sh/ruff/rules/#pyupgrade-up
+  "YTT", # flake8-2020 https://docs.astral.sh/ruff/rules/#flake8-2020-ytt
+  "B", # flake8-bugbear https://docs.astral.sh/ruff/rules/#flake8-bugbear-b
+  "A", # flake8-builtins https://docs.astral.sh/ruff/rules/#flake8-builtins-a
+  "RUF", # Ruff-specific rules https://docs.astral.sh/ruff/rules/#ruff-specific-rules-ruf
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
 
 [build-system]
-build-backend = "poetry.core.masonry.api"
-requires = ["poetry-core"]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
