@@ -60,7 +60,5 @@ def solve(param: Param, max_runtime=60, max_iterations=10000, **kwargs) -> Resul
             m.add_edge(to, fr, _d, _d)
     stop = MultipleCriteria([MaxRuntime(max_runtime), MaxIterations(max_iterations)])
     result = m.solve(stop, **kwargs)
-    routes = []
-    for route in result.best.routes():
-        routes.append([i // 2 for i in route if i % 2])
+    routes = [[i // 2 for i in route if i % 2] for route in result.best.routes()]
     return Result_(m, routes, result)
