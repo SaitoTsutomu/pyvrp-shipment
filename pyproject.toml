@@ -15,14 +15,14 @@ license = {text = "Apache-2.0"}
 name = "pyvrp-shipment"
 readme = "README.md"
 requires-python = ">=3.12"
-version = "0.2.0"
+version = "0.2.1"
 
 [project.urls]
 homepage = "https://github.com/SaitoTsutomu/pyvrp-shipment"
 
 [tool.uv]
 dev-dependencies = [
-  "pytest>=8.3.2",
+  "pytest>=8.3.3",
 ]
 
 [tool.mypy]

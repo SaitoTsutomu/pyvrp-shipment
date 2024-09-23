@@ -1,7 +1,12 @@
 from dataclasses import dataclass
+from importlib.metadata import metadata
 
 from pyvrp import Model, Result
 from pyvrp.stop import MaxIterations, MaxRuntime, MultipleCriteria
+
+_package_metadata = metadata(__package__)
+__version__ = _package_metadata["Version"]
+__author__ = _package_metadata.get("Author-email", "")
 
 
 @dataclass
