@@ -4,13 +4,14 @@ from importlib.metadata import metadata
 from pyvrp import Model, Result
 from pyvrp.stop import MaxIterations, MaxRuntime, MultipleCriteria
 
-_package_metadata = metadata(__package__)
-__version__ = _package_metadata["Version"]
-__author__ = _package_metadata.get("Author-email", "")
+if __package__:
+    _package_metadata = metadata(__package__)
+    __version__ = _package_metadata["Version"]
+    __author__ = _package_metadata.get("Author-email", "")
 
 
 @dataclass
-class VehicleType_:  # noqa: N801; To separate from pyvrp.VehicleType.
+class VehicleType_:  # To separate from pyvrp.VehicleType.
     num_available: int
     capacity: int
     max_duration: int
@@ -33,7 +34,7 @@ class Param:
 
 
 @dataclass
-class Result_:  # noqa: N801; To separate from pyvrp.Result.
+class Result_:  # To separate from pyvrp.Result.
     model: Model
     order_indexes: list[list[int]]
     result: Result

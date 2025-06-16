@@ -15,14 +15,14 @@ license = {text = "Apache-2.0"}
 name = "pyvrp-shipment"
 readme = "README.md"
 requires-python = ">=3.12"
-version = "0.2.1"
+version = "0.2.2"
 
 [project.urls]
 homepage = "https://github.com/SaitoTsutomu/pyvrp-shipment"
 
 [tool.uv]
 dev-dependencies = [
-  "pytest>=8.3.4",
+  "pytest>=8.4.0",
 ]
 
 [tool.mypy]
@@ -44,7 +44,7 @@ testpaths = ["src"]
 src = ["src"]
 
 [tool.ruff.lint]
-ignore = ["ANN", "CPY", "D", "E501", "RUF052"]
+ignore = ["ANN", "CPY", "D", "E501", "N801", "RUF052"]
 preview = true
 select = ["ALL"]
 
